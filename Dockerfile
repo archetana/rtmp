@@ -77,8 +77,11 @@ RUN --mount=type=secret,id=nginx-crt,dst=nginx-repo.crt \
     && rm -rf /etc/apt/apt.conf.d/90nginx /etc/ssl/nginx \
 # Forward request logs to Docker log collector
     && ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
+    && ln -sf /dev/stderr /var/log/nginx/error.log \
+    && ufw allow 1935/tcp 
+    
 
+ADD nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 
 STOPSIGNAL SIGQUIT
