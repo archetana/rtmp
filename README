@@ -1,0 +1,1 @@
+docker run -p 8080:80 -it archetana/nginx-rtmp:1.0 /usr/local/nginx/sbin/nginx
